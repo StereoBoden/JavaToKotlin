@@ -1,52 +1,40 @@
 package com.jaimeboden.javatokotlin
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import org.jetbrains.anko.*
+import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_main_java.*
 
 class MainActivityKotlin : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        initialiseLayout()
-    }
+        setContentView(R.layout.activity_main_java)
 
-    fun initialiseLayout() {
-        verticalLayout {
-            imageView {
-                imageResource = R.drawable.kotlin_logo
-            }.lparams(width = wrapContent, height = wrapContent)
+        buttonJava.setOnClickListener {
+            initJavaHelper()
+        }
 
-            button("Java"){
-                onClick { initJavaHelper() }
-            }.lparams(width = matchParent, height = wrapContent) {
-                bottomMargin = 50
-            }
+        buttonKotlin.setOnClickListener {
+            initKotlinHelper()
+        }
 
-            button("Kotlin"){
-                onClick { initKotlinHelper() }
-            }.lparams(width = matchParent, height = wrapContent) {
-                bottomMargin = 50
-            }
-
-            button("Switch to Java"){
-                onClick { switchToJava() }
-            }.lparams(width = matchParent, height = wrapContent)
+        buttonSwitchKotlin.setOnClickListener {
+            switchToJava()
         }
     }
 
-    fun initJavaHelper() {
+    private fun initJavaHelper() {
         val jh = JavaHelper()
         jh.sayHello(this)
     }
 
-    fun initKotlinHelper() {
+    private fun initKotlinHelper() {
         val kh = KotlinHelper()
         kh.sayHello(this)
     }
 
-    fun switchToJava() {
+    private fun switchToJava() {
         val kotlinIntent = Intent(this, MainActivityJava::class.java)
         startActivity(kotlinIntent)
     }

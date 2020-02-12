@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:text="Java"
         android:layout_marginBottom="50dp"
-        android:id="@+id/buttonJava"/>
+        android:id="@+id/buttonJava" />
 
     <Button
         android:layout_width="match_parent"
